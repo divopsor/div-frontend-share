@@ -1,7 +1,11 @@
 const fs = require("fs-extra");
 const path = require("path");
 const execa = require("execa");
-const cwd = process.cwd();
+
+const [,,_cwd] = process.argv;
+
+const cwd = process.cwd() + (_cwd == null ? '' : `/${_cwd}`);
+
 const target = (targets) => path.join(__dirname, targets);
 const dest = (dest) => path.join(cwd, dest);
 
